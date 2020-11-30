@@ -209,7 +209,7 @@ class RL_Trainer(object):
         # HINT: query the policy (using the get_action function) with paths[i]["observation"]
         # and replace paths[i]["action"] with these expert labels
         for i in paths:
-            paths[i]["action"] = expert_policy.get_action(paths[i]["observation"])
+            i["action"] = expert_policy.get_action(i["observation"])
         return paths
 
     ####################################
@@ -228,6 +228,7 @@ class RL_Trainer(object):
 
             #save train/eval videos
             print('\nSaving train rollouts as videos...')
+            print(itr)
             self.logger.log_paths_as_videos(train_video_paths, itr, fps=self.fps, max_videos_to_save=MAX_NVIDEO,
                                             video_title='train_rollouts')
             self.logger.log_paths_as_videos(eval_video_paths, itr, fps=self.fps,max_videos_to_save=MAX_NVIDEO,

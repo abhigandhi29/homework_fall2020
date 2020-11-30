@@ -53,6 +53,7 @@ def build_mlp(
 
     model = nn.Sequential(OrderedDict(layers))
     print(model)
+    return model
     # TODO: return a MLP. This should be an instance of nn.Module
     # Note: nn.Sequential is an instance of nn.Module.
     #raise NotImplementedError

@@ -119,7 +119,7 @@ class MLPPolicySL(MLPPolicy):
     ):
         # TODO: update the policy and return the loss
         self.optimizer.zero_grad()
-        current_action = forward(ptu.from_numpy(observations))
+        current_action = self.forward(ptu.from_numpy(observations))
         loss = self.loss(current_action, ptu.from_numpy(actions))
         loss.backward()
         self.optimizer.step()

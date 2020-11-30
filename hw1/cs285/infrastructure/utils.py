@@ -27,7 +27,7 @@ def sample_trajectory(env, policy, max_path_length, render=False, render_mode=('
 
         # use the most recent ob to decide what to do
         obs.append(ob)
-        ac = policy.get_action(obs) # HINT: query the policy's get_action function
+        ac = policy.get_action(ob) # HINT: query the policy's get_action function
         ac = ac[0]
         acs.append(ac)
 
@@ -64,7 +64,7 @@ def sample_trajectories(env, policy, min_timesteps_per_batch, max_path_length, r
     while timesteps_this_batch < min_timesteps_per_batch:
         Path = sample_trajectory(env, policy, max_path_length, render, render_mode)
         timesteps_this_batch += get_pathlength(Path)
-        Paths.append(Path)
+        paths.append(Path)
 
     return paths, timesteps_this_batch
 
